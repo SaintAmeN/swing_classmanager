@@ -14,4 +14,8 @@ public class Student {
     private boolean quarantined;
     private Gender gender;
 
+    @Override
+    public String toString() {
+        return name + " " + lastName;
+    }
 }
