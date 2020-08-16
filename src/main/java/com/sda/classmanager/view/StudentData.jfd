@@ -9,59 +9,58 @@ new FormModel {
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "labelHeadlineForm"
-				"text": "Student Form:"
-				"font": new java.awt.Font( "Bitstream Vera Sans", 1, 21 )
+				name: "labelDescription"
+				"text": "Student Data:"
 			} )
 			add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
 				name: "hSpacer1"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "firstNameLabel"
+				"text": "First Name:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "labelName"
-				"text": "Name:"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textFieldName"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Last Name:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "labelLastName"
-				"text": "Last name:"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textFieldLastName"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "labelGender"
-				"text": "Gender:"
+				name: "label4"
+				"text": "Year born:"
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "spinnerYearBorn"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Gender: "
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "comboGender"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "labelQuarantined"
+				name: "label6"
 				"text": "Quarantined:"
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "checkQuarantined"
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "labelYearBorn"
-				"text": "Year born:"
-			} )
-			add( new FormComponent( "javax.swing.JSpinner" ) {
-				name: "spinnerYearBorn"
-				"model": new javax.swing.SpinnerNumberModel( 1920, 1920, 2020, 1 )
-			} )
-			add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-				name: "vSpacer5"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonSave"
+				"text": "Save"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "buttonSubmit"
-				"text": "Submit"
+				name: "buttonDelete"
+				"text": "Delete"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 445, 550 )
+			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}
 }
