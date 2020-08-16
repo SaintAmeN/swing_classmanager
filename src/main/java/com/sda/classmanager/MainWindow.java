@@ -15,35 +15,41 @@ import javax.swing.*;
 /**
  * @author unknown
  */
-public class MainWindow extends JFrame implements ActionListener {
+public class MainWindow extends JFrame {
     public MainWindow() {
         initComponents();
+
+        // sekcja inicjalizacji zmiennych
+        studentForm = new StudentForm();
+
+        // sekcja konfiguracji widoku
+        leftPanel.add(studentForm);
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Pawel
-        panel1 = new JPanel();
+        leftPanel = new JPanel();
         panel2 = new JPanel();
         labelList = new JLabel();
         scrollPane1 = new JScrollPane();
         list1 = new JList();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(1, 2));
 
-        //======== panel1 ========
+        //======== leftPanel ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
-            panel1.setLayout(new GridLayout(12, 3, 1, 1));
+            leftPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),leftPanel. getBorder()));leftPanel. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
+            leftPanel.setLayout(new GridLayout(1, 1, 1, 1));
         }
-        contentPane.add(panel1);
+        contentPane.add(leftPanel);
 
         //======== panel2 ========
         {
@@ -78,24 +84,12 @@ public class MainWindow extends JFrame implements ActionListener {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Pawel
-    private JPanel panel1;
+    private JPanel leftPanel;
     private JPanel panel2;
     private JLabel labelList;
     private JScrollPane scrollPane1;
     private JList list1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        Student student = new Student();
-        student.setName(textFieldName.getText());
-        student.setLastName(textFieldLastName.getText());
-        student.setQuarantined(checkQuarantined.isSelected());
-        student.setYearBorn((Integer) spinnerYearBorn.getValue());
-        student.setGender((Gender) comboGender.getSelectedItem());
-
-//        System.out.println(student);
-
-//        labelResult.setText(student.toString());
-    }
+    private final StudentForm studentForm;
 }
