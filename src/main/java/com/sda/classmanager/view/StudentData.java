@@ -4,7 +4,11 @@
 
 package com.sda.classmanager.view;
 
+import com.sda.classmanager.model.Gender;
+import com.sda.classmanager.model.Student;
+
 import java.awt.*;
+import java.time.LocalDate;
 import javax.swing.*;
 
 /**
@@ -13,6 +17,13 @@ import javax.swing.*;
 public class StudentData extends JPanel {
     public StudentData() {
         initComponents();
+        Gender[] genders = Gender.values();
+        for (Gender gender : genders) {
+            comboGender.addItem(gender);
+        }
+        // Prepare spinner Year Born                        .. Wartość początkowa    minimum             maksimum               skok
+        spinnerYearBorn.setModel(new SpinnerNumberModel(LocalDate.now().getYear(), 1920, LocalDate.now().getYear(), 1));
+
     }
 
     private void initComponents() {
@@ -97,5 +108,13 @@ public class StudentData extends JPanel {
     private JCheckBox checkQuarantined;
     private JButton buttonSave;
     private JButton buttonDelete;
+
+    public void setData(Student zaznaczonyStudent) {
+        labelName.setText(zaznaczonyStudent.getName());
+        labelLastName.setText(zaznaczonyStudent.getName());
+        spinnerYearBorn.setValue(zaznaczonyStudent.getYearBorn());
+        // TODO: GENDER
+        checkQuarantined.setSelected(zaznaczonyStudent.isQuarantined());
+    }
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

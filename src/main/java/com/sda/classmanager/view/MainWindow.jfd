@@ -11,6 +11,7 @@ new FormModel {
 				"columns": 1
 				"hgap": 1
 				"vgap": 1
+				"rows": 2
 			} ) {
 				name: "leftPanel"
 			} )
