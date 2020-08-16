@@ -14,77 +14,29 @@ new FormModel {
 				"vgap": 1
 			} ) {
 				name: "panel1"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelHeadlineForm"
-					"text": "Student Form:"
-					"font": new java.awt.Font( "Bitstream Vera Sans", 1, 21 )
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
-					name: "hSpacer1"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelName"
-					"text": "Name:"
-				} )
-				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textFieldName"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelLastName"
-					"text": "Last name:"
-				} )
-				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textFieldLastName"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelQuarantined"
-					"text": "Quarantined:"
-				} )
-				add( new FormComponent( "javax.swing.JCheckBox" ) {
-					name: "checkQuarantined"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelGender"
-					"text": "Gender:"
-				} )
-				add( new FormComponent( "javax.swing.JComboBox" ) {
-					name: "comboGender"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelYearBorn"
-					"text": "Year born:"
-				} )
-				add( new FormComponent( "javax.swing.JSpinner" ) {
-					name: "spinnerYearBorn"
-					"model": new javax.swing.SpinnerNumberModel( 1920, 1920, 2020, 1 )
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-					name: "vSpacer4"
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "buttonSubmit"
-					"text": "Submit"
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-					name: "vSpacer5"
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-					name: "vSpacer1"
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-					name: "vSpacer2"
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
-					name: "vSpacer6"
-				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
-				"columns": 1
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0"
+				"$rowSpecs": "0:1.0, 0:1.0, 0"
+				"$alignTop": true
+				"$alignLeft": true
 			} ) {
 				name: "panel2"
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelResult"
-					"text": "text"
+					name: "labelList"
+					"text": "Student List:"
+					"font": new java.awt.Font( "Bitstream Vera Sans", 1, 21 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"weighty": 1.0
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 1
+					"weighty": 10.0
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
