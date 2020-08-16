@@ -4,10 +4,14 @@
 
 package com.sda.classmanager.view;
 
+import com.sda.classmanager.interfaces.INewStudentFromSubmittedListener;
+import com.sda.classmanager.interfaces.IStudentRemovedListener;
 import com.sda.classmanager.model.Gender;
 import com.sda.classmanager.model.Student;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.*;
 
@@ -15,7 +19,11 @@ import javax.swing.*;
  * @author Pawel
  */
 public class StudentData extends JPanel {
-    public StudentData() {
+    private IStudentRemovedListener studentRemovedListener;
+    private Student selectedStudent;
+
+    public StudentData(IStudentRemovedListener listener) {
+        this.studentRemovedListener = listener;
         initComponents();
         Gender[] genders = Gender.values();
         for (Gender gender : genders) {
@@ -23,7 +31,11 @@ public class StudentData extends JPanel {
         }
         // Prepare spinner Year Born                        .. Wartość początkowa    minimum             maksimum               skok
         spinnerYearBorn.setModel(new SpinnerNumberModel(LocalDate.now().getYear(), 1920, LocalDate.now().getYear(), 1));
-
+        buttonDelete.addActionListener(actionEvent -> {
+            if (studentRemovedListener != null) {
+                studentRemovedListener.studentRemoved(selectedStudent);
+            }
+        });
     }
 
     private void initComponents() {
@@ -45,11 +57,17 @@ public class StudentData extends JPanel {
         buttonDelete = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-        , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
+                , 0, 0, 0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM
+                , new java.awt.Font("D\u0069alog", java.awt.Font.BOLD, 12), java.awt.Color.red),
+                getBorder()));
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            @Override
+            public void propertyChange(java.beans.PropertyChangeEvent e
+            ) {
+                if ("\u0062order".equals(e.getPropertyName())) throw new RuntimeException();
+            }
+        });
         setLayout(new GridLayout(7, 2));
 
         //---- labelDescription ----
@@ -110,6 +128,8 @@ public class StudentData extends JPanel {
     private JButton buttonDelete;
 
     public void setData(Student zaznaczonyStudent) {
+        selectedStudent = zaznaczonyStudent;
+
         labelName.setText(zaznaczonyStudent.getName());
         labelLastName.setText(zaznaczonyStudent.getName());
         spinnerYearBorn.setValue(zaznaczonyStudent.getYearBorn());

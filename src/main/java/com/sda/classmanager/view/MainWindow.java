@@ -33,10 +33,19 @@ public class MainWindow extends JFrame {
         studentListPanel.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                int index = listSelectionEvent.getFirstIndex();
+                int index = studentListPanel.getSelectedIndex();
                 if (index != -1) {
-                    if(studentData == null){
-                        studentData = new StudentData();
+                    if (studentData == null) {
+                        studentData = new StudentData(student -> {
+                            int indexToRemove = studentListPanel.getSelectedIndex();
+                            if (indexToRemove != -1) {
+                                studentListModel.remove(indexToRemove);
+                            }
+                            leftPanel.remove(studentData);
+                            studentData = null;
+                            revalidate();
+                            repaint();
+                        });
                         leftPanel.add(studentData);
                         revalidate();
                         repaint();
