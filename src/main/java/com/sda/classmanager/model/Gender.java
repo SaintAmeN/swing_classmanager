@@ -1,4 +1,4 @@
-package com.sda.classmanager;
+package com.sda.classmanager.model;
 
 public enum Gender {
     MALE,

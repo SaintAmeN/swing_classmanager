@@ -1,4 +1,4 @@
-package com.sda.classmanager;
+package com.sda.classmanager.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

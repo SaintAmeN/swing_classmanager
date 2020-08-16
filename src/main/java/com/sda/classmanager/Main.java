@@ -1,5 +1,7 @@
 package com.sda.classmanager;
 
+import com.sda.classmanager.view.MainWindow;
+
 import javax.swing.*;
 
 public class Main {

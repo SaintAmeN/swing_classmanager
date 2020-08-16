@@ -2,11 +2,13 @@
  * Created by JFormDesigner on Sun Aug 16 14:08:18 CEST 2020
  */
 
-package com.sda.classmanager;
+package com.sda.classmanager.view;
+
+import com.sda.classmanager.interfaces.INewStudentFromSubmittedListener;
+import com.sda.classmanager.model.Gender;
+import com.sda.classmanager.model.Student;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.*;
 
@@ -38,7 +40,15 @@ public class StudentForm extends JPanel {
             if (newStudentListener != null) {
                 newStudentListener.studentCreated(student);
             }
+            clearForm();
         });
+    }
+
+    void clearForm(){
+        textFieldName.setText("");
+        textFieldLastName.setText("");
+        checkQuarantined.setSelected(false);
+        spinnerYearBorn.setValue(LocalDate.now().getYear());
     }
 
     private void initComponents() {
